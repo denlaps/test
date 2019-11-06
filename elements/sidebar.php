@@ -15,7 +15,7 @@
                             <a href="/category.php?id=<?php echo $categories_row['id']; ?>" class="menuBar__more"><?php echo $categories_row['name']; ?></a>
                                 <ul>
                                     <?php while ($goods_row = mysqli_fetch_array($goods_res)) {  ?>
-                                        <li><a href="<?php echo $goods_row['id'] ?>"><?php echo $goods_row['name']; ?></a></li>
+                                        <li><a href="/good.php?id=<?= $goods_row['id'] ?>"><?php echo $goods_row['name']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

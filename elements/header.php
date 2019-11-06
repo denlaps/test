@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="libs/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="libs/owlcarousel/owl.theme.default.min.css">
     <script src="https://kit.fontawesome.com/c6f437d80c.js" crossorigin="anonymous"></script>
 </head>
