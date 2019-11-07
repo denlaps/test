@@ -1,89 +1,17 @@
 <?php 
-include ('header.php');
+include ('elements/header.php');
 ?>
         <section class="contentWrapper">
-            <!-- [LEFT SIDE MENU] -->
-            <aside>
-                <nav class="menuBar">
-                    <li><a href="#">НОВИНКИ</a></li>
-                    <li><a href="#">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
-                    <li><a href="#">РАСПРОДАЖА</a></li>
-
-                    <li><a href="#">Шапки</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Шарфы и платки</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Солнцезащитные платки</a></li>
-                    <li><a href="#">Ремни</a></li>
-                    <li><a href="#">Часы</a></li>
-                    <li><a href="#">Кошельки</a></li>
-                    <li><a href="#">Перчатки</a></li>
-                    <li><a href="#">Зонты</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Для волос</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Украшения</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Пляжные аксессуары</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Носки</a></li>
-                    <li><a href="#">Домашняя обувь</a></li>
-                    <li><a href="#">Маски карнавальные</a></li>
-
-                    <li>
-                        <a href="#" class="menuBar__more">ДЕТЯМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">МУЖЧИНАМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                </nav>
-            </aside>
-            <!-- [/END MENU] -->
+        <?php 
+            include ('./elements/sidebar.php');
+        ?>
 
             <!-- [RIGHT SIDE] -->
             <section class="mainContent">
                 <!-- [Head] -->
                 <nav class="minLinks">
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Корзина</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/cart.php">Корзина</a></li>
                 </nav>
                 <h1>Ваш заказ</h1>
                 <!-- [/End Head] -->
@@ -91,52 +19,6 @@ include ('header.php');
                 <!-- [MAIN CONTENT] -->
                 <main class="basketPage">
                     <section class="basketPage__itemList">
-                        <figure class="goodItem">
-                            <div class="goodItem__wrapper">
-                                <img src="uploads/cap.jpg" alt="">
-                                <figcaption>
-                                    <a href="#">Шапка женская</a>
-                                    <span>Артикул: 12-54651-56</span>
-                                </figcaption>
-                            </div>
-                            <span class="goodItem__color" style="background-color: #fa4557;"></span>
-                            <select class="selectSize">
-                                <option value="54">54</option>
-                                <option value="56">56</option>
-                            </select>
-                            <div class="itemCounter">
-                                <button class="itemCounter__minus">-</button>
-                                <input type="text" value="1">
-                                <button class="itemCounter__plus">+</button>
-                            </div>
-                            <span class="goodItem__price">1 000 руб.</span>
-                            <button class="goodItem__close">
-                                <i class="fas fa-times" aria-hidden="true"></i>
-                            </button>
-                        </figure>
-                        <figure class="goodItem">
-                            <div class="goodItem__wrapper">
-                                <img src="uploads/cap.jpg" alt="">
-                                <figcaption>
-                                    <a href="#">Шапка женская</a>
-                                    <span>Артикул: 12-54651-56</span>
-                                </figcaption>
-                            </div>
-                            <span class="goodItem__color" style="background-color: #fa4557;"></span>
-                            <select class="selectSize">
-                                <option value="54">54</option>
-                                <option value="56">56</option>
-                            </select>
-                            <div class="itemCounter">
-                                <button class="itemCounter__minus">-</button>
-                                <input type="text" value="1">
-                                <button class="itemCounter__plus">+</button>
-                            </div>
-                            <span class="goodItem__price">1 000 руб.</span>
-                            <button class="goodItem__close">
-                                <i class="fas fa-times" aria-hidden="true"></i>
-                            </button>
-                        </figure>
                         <figure class="goodItem">
                             <div class="goodItem__wrapper">
                                 <img src="uploads/cap.jpg" alt="">
@@ -302,6 +184,7 @@ include ('header.php');
 
     <!-- Custom -->
     <script>
+    
     $('.selectSize').selectmenu({
         classes: {
             'ui-selectmenu-button-closed': 'selectSize_closed',

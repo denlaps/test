@@ -43,13 +43,13 @@ include ('./elements/header.php');
                     <section class="goodPage__wrapper">
                         <section class="goodPage__chView">
                             <?php while ($good_photos_row = mysqli_fetch_array($good_photos_res)) { ?>
-                            <button <?php if ($good_photos_row['is_main'] == 1) { ?> class="active" <?php } ?>>
+                            <button id="photo<?= $good_photos_row['id'] ?>" onclick="watchPhoto(<?= $good_photos_row['id'] ?>, `<?= $good_photos_row['photo'] ?>`)" <?php if ($good_photos_row['is_main'] == 1) { ?> class="active" <?php } ?>>
                                 <img src="<?= $good_photos_row['photo'] ?>" alt="">
                             </button>
                             <?php } ?>
                         </section>
                         <section class="goodPage__photo">
-                            <img src="<?= $good_main_photo_row['photo'] ?>" alt="">
+                            <img id="bigPhoto" src="<?= $good_main_photo_row['photo'] ?>" alt="">
                             <div class="goodPage__addBtn">
                                 <button onclick='putToChoosen(`<?= $good_json ?>`)'><i class="far fa-heart"></i></button>
                             </div>
@@ -63,13 +63,13 @@ include ('./elements/header.php');
                             <section class="goodPage__size">
                                 <h4>Размер:</h4>
                                 <?php while ($good_sizes_row = mysqli_fetch_array($good_sizes_res)) { ?>
-                                    <button><?= $good_sizes_row['name'] ?></button>
+                                    <button id="size<?= $good_sizes_row['id'] ?>" onclick="setSize(<?= $good_sizes_row['name'] ?>, `size` + <?= $good_sizes_row['id'] ?>)"><?= $good_sizes_row['name'] ?></button>
                                 <?php } ?>
                             </section>
                             <section class="goodPage__color">
                                 <h4>Цвет:</h4>
                                 <?php while ($good_colors_row = mysqli_fetch_array($good_colors_res)) { ?>
-                                    <button style="background-color: #<?= $good_colors_row['hex'] ?>;"></button>
+                                    <button id="color<?= $good_colors_row['id'] ?>" name="#<?= $good_colors_row['hex'] ?>" onclick="setColor(`#` + `<?= $good_colors_row['hex'] ?>`, `#color` + <?= $good_colors_row['id'] ?>)" style="background-color: #<?= $good_colors_row['hex'] ?>;"></button>
                                 <?php } ?>
                             </section>
                             <section class="goodPage__venId">
@@ -77,7 +77,7 @@ include ('./elements/header.php');
                                 <span><?= $good_row['art'] ?></span>
                             </section>
 
-                            <button onclick='putToBasket(`<?= $good_json ?>`)' class="goodPage__toCart">
+                            <button onclick='putToBasket(`<?= $good_json ?>`, selectedSize, selectedColor)' class="goodPage__toCart">
                                 <i class="fas fa-shopping-basket"></i>
                                 <span>В корзину</span>
                             </button>
@@ -138,7 +138,7 @@ include ('./elements/header.php');
                                         <a href="/good.php?id=<?= $good_combined_row['id'] ?>"><?= $good_combined_row['name'] ?></a>
                                         <span><?= $good_combined_row['price'] ?> руб.</span>
                                     </div>
-                                    <button onclick='putToBasket(`<?= $good_combined_json ?>`)'><i class="fas fa-shopping-basket"></i></button>
+                                    <button onclick='putToBasket(`<?= $good_combined_json ?>`, ``, ``)'><i class="fas fa-shopping-basket"></i></button>
                                 </figcaption>
                             </figure>
                         <?php } ?>
@@ -164,9 +164,36 @@ include ('./elements/header.php');
     <script src="js/main.js"></script>
     
     <script>
-    function putToBasket(element) {
+    var selectedColor = $("button[id^='color']").first().attr('name');
+    var selectedSize = $("button[id^='size']").first().text();
+
+    setSize(selectedSize, $("button[id^='size']").first().attr('id'));
+    setColor(selectedColor, '#' + $("button[id^='color']").first().attr('id'));
+    
+    function watchPhoto(id, link) {
+        console.log(id)
+        $("#bigPhoto").attr("src", link);
+        $("button[id^='photo']").removeClass('active');
+        jQuery('#photo' + id).addClass('active');
+    }
+
+    function setSize(size, id) {
+        selectedSize = size;
+        $("button[id^='size']").removeClass('active');
+        jQuery('#' + id).addClass('active');
+    }
+
+    function setColor(color, id) {
+        $("button[id^='color']").removeClass('active');
+        jQuery(id).addClass('active');
+        selectedColor = color;
+    }
+
+    function putToBasket(element, size, color) {
         var element = JSON.parse(element);
         element.quantity = 1;
+        element.color = color;
+        element.size = size;
         var basket = localStorage.getItem("basket");
         var basketArray = { basket: [] };
         

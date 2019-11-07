@@ -1,111 +1,54 @@
 <?php 
-include ('header.php');
+include ('elements/header.php');
 ?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <section class="contentWrapper">
-            <!-- [LEFT SIDE MENU] -->
-            <aside>
-                <nav class="menuBar">
-                    <li><a href="#">НОВИНКИ</a></li>
-                    <li><a href="#">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
-                    <li><a href="#">РАСПРОДАЖА</a></li>
+        <?php 
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+            include ('elements/sidebar.php');
+            $instagram_res = mysqli_query($db, "SELECT * FROM instagram WHERE id = 1 LIMIT 1");
+            $instagram_row = mysqli_fetch_assoc($instagram_res);
+            $token = $instagram_row['token'];
+            $cid = $instagram_row['cid'];
 
-                    <li><a href="#">Шапки</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Шарфы и платки</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Солнцезащитные платки</a></li>
-                    <li><a href="#">Ремни</a></li>
-                    <li><a href="#">Часы</a></li>
-                    <li><a href="#">Кошельки</a></li>
-                    <li><a href="#">Перчатки</a></li>
-                    <li><a href="#">Зонты</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Для волос</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Украшения</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Пляжные аксессуары</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Носки</a></li>
-                    <li><a href="#">Домашняя обувь</a></li>
-                    <li><a href="#">Маски карнавальные</a></li>
+            function rudr_instagram_api_curl_connect( $api_url ){
+                $connection_c = curl_init(); // initializing
+                curl_setopt( $connection_c, CURLOPT_URL, $api_url ); // API URL to connect
+                curl_setopt( $connection_c, CURLOPT_RETURNTRANSFER, 1 ); // return the result, do not print
+                curl_setopt( $connection_c, CURLOPT_TIMEOUT, 20 );
+                $json_return = curl_exec( $connection_c ); // connect and get json data
+                curl_close( $connection_c ); // close connection
+                return json_decode( $json_return ); // decode and return
+            }
 
-                    <li>
-                        <a href="#" class="menuBar__more">ДЕТЯМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">МУЖЧИНАМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                </nav>
-            </aside>
-            <!-- [/END MENU] -->
+            $return = rudr_instagram_api_curl_connect("https://api.instagram.com/v1/users/".$cid."/media/recent?access_token=".$token."&count=12");
+        ?>
+
 
             <!-- [RIGHT SIDE] -->
             <section class="mainContent">
                 <!-- [Head] -->
                 <nav class="minLinks">
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Instashop</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/instashop.php">Instashop</a></li>
                 </nav>
+
                 <h1>Instashop</h1>
                 <!-- [/End Head] -->
-
+                
                 <!-- [MAIN CONTENT] -->
                 <main class="instaShop">
                     <!-- [INSTA] -->
                     <section class="instaShop__wrapper">
-                        <a href=""><img src="uploads/girl1.jpg" alt=""></a>
-                        <a href=""><img src="uploads/girl2.jpg" alt=""></a>
-                        <a href=""><img src="uploads/girl3.jpg" alt=""></a>
-                        <a href=""><img src="uploads/girl4.jpg" alt=""></a>
-                        <a href=""><img src="uploads/sliderGirl1.jpg" alt=""></a>
-                        <a href=""><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                        <a href=""><img src="uploads/sliderGirl3.jpg" alt=""></a>
-                        <a href=""><img src="uploads/girl3.jpg" alt=""></a>
-                        <a href=""><img src="uploads/girl3.jpg" alt=""></a>
+                        <?php foreach ($return->data as $post) { ?>
+                            <a href="<?= $post->link ?>"><img src="<?= $post->images->standard_resolution->url ?>" alt=""></a>
+                        <?php } ?>
                     </section>
                     <!-- [/END INSTA] -->
 
-                    <button class="showMore">Показать ещё</button>
+                    <button onclick="loadMoreInstagram()" class="showMore">Показать ещё</button>
                 </main>
                 <!-- [/END CONTENT] -->
             </section>
@@ -113,60 +56,22 @@ include ('header.php');
         </section>
     </div>
     
-    <!-- [FOOTER] -->
-    <footer>
-        <div class="footer__wrapper">
-            <section class="footer__top">
-                <nav>
-                    <li><a href="#">Как заказать</a></li>
-                    <li><a href="#">Бонусная программа</a></li>
-                    <li><a href="#">Оплата и доставка</a></li>
-                    <li><a href="#">Гарантии и возврат</a></li>
-                    <li><a href="#">Вопрос-ответ</a></li>
-                </nav>
-                <nav>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                    <li><a href="#">Франшиза</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </nav>
-                <section class="footer__contacts">
-                    <ul class="number">
-                        <li><i class="fas fa-phone-alt"></i>8-888-888-88-88</li>
-                        <li><i class="fas fa-envelope"></i>frimis@gmail.com</li>
-                    </ul>
-                    <ul class="social">
-                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-odnoklassniki"></i></a></li>
-                    </ul>
-                </section>
-                <form action="#">
-                    <h4>Оформите подписку</h4>
-                    <input type="text" placeholder="Укажите e-mail">
-                    <input type="submit" value="Подписаться">
-                    <label>
-                        Нажимая на кнопку «Подписаться», я
-                        соглашаюсь на обработку моих персональных
-                        данных и ознакомлен(а) с условиями
-                        конфиденциальности.
-                    </label>
-                </form>
-            </section>
-            <section class="footer__info">
-                <span>
-                    © «Frimis» — интернет-магазин украшений и аксессуаров.<br>
-                    <a href="#">Политика конфиденциальности.</a>
-                </span>
-                <a href="#" class="fiveLogo">Разработка<br>и дизайн сайта «FIVE»</a>
-            </section>
-        </input>
-    </footer>
-    <!-- [/END FOOTER] -->
+    <?php include('elements/footer.php'); ?>
+            
+    <script>
+        var nextUrl = `<?= $return->pagination->next_url ?>`;
+        function loadMoreInstagram() {
+            $.get(nextUrl, (res) => {
+                res.data.forEach((el) => {
+                    $('.instaShop__wrapper').append(`<a href="` + el.link + `"><img src="` + el.images.standard_resolution.url + `" alt=""></a>`);
+                });
+                nextUrl = res.pagination.next_url;
+            });
+        }
+       
+    </script>
 
     <!-- [SCRIPTS] -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="js/main.js"></script>
     <!-- [/SCRIPTS] -->
