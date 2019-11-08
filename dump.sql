@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
--- Host: onoartsr.beget.tech    Database: onoartsr_frimis
+-- Host: onoartsr.beget.tech    Database: 
 -- ------------------------------------------------------
 -- Server version	5.7.21-20-beget-5.7.21-20-1-log
 
@@ -14,6 +14,14 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `onoartsr_frimis`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `onoartsr_frimis` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `onoartsr_frimis`;
 
 --
 -- Table structure for table `category`
@@ -155,12 +163,13 @@ CREATE TABLE `good_color` (
   `good_id` int(11) DEFAULT NULL,
   `color_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hex` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_main` tinyint(1) DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `good_color_good_id_fk` (`good_id`),
   CONSTRAINT `good_color_good_id_fk` FOREIGN KEY (`good_id`) REFERENCES `good` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +178,7 @@ CREATE TABLE `good_color` (
 
 LOCK TABLES `good_color` WRITE;
 /*!40000 ALTER TABLE `good_color` DISABLE KEYS */;
-INSERT INTO `good_color` VALUES (1,1,'ЧОРНИЙ','000000','2019-11-05 19:01:53','2019-11-05 19:01:55'),(2,1,'КРАСНИЙ','FF0000','2019-11-06 16:55:48','2019-11-06 16:55:50');
+INSERT INTO `good_color` VALUES (1,1,'ЧОРНИЙ','000000',0,'2019-11-05 19:01:53','2019-11-05 19:01:55'),(2,1,'КРАСНИЙ','FF0000',1,'2019-11-06 16:55:48','2019-11-06 16:55:50'),(3,2,'ЗЕЛЕНИЙ','00FF00',1,'2019-11-08 15:38:04','2019-11-08 15:38:06');
 /*!40000 ALTER TABLE `good_color` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +257,7 @@ CREATE TABLE `good_size` (
   PRIMARY KEY (`id`),
   KEY `good_size_good_id_fk` (`good_id`),
   CONSTRAINT `good_size_good_id_fk` FOREIGN KEY (`good_id`) REFERENCES `good` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +266,7 @@ CREATE TABLE `good_size` (
 
 LOCK TABLES `good_size` WRITE;
 /*!40000 ALTER TABLE `good_size` DISABLE KEYS */;
-INSERT INTO `good_size` VALUES (1,'52',1,'2019-11-05 19:03:08','2019-11-05 19:03:11'),(2,'54',1,'2019-11-06 16:53:10','2019-11-06 16:53:12');
+INSERT INTO `good_size` VALUES (1,'52',1,'2019-11-05 19:03:08','2019-11-05 19:03:11'),(2,'54',1,'2019-11-06 16:53:10','2019-11-06 16:53:12'),(3,'30',2,'2019-11-08 15:44:54','2019-11-08 15:44:56');
 /*!40000 ALTER TABLE `good_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -561,4 +570,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-07 12:07:11
+-- Dump completed on 2019-11-08 16:47:20
