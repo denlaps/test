@@ -19,29 +19,7 @@ include ('elements/header.php');
                 <!-- [MAIN CONTENT] -->
                 <main class="basketPage">
                     <section class="basketPage__itemList">
-                        <figure class="goodItem">
-                            <div class="goodItem__wrapper">
-                                <img src="uploads/cap.jpg" alt="">
-                                <figcaption>
-                                    <a href="#">Шапка женская</a>
-                                    <span>Артикул: 12-54651-56</span>
-                                </figcaption>
-                            </div>
-                            <span class="goodItem__color" style="background-color: #fa4557;"></span>
-                            <select class="selectSize">
-                                <option value="54">54</option>
-                                <option value="56">56</option>
-                            </select>
-                            <div class="itemCounter">
-                                <button class="itemCounter__minus">-</button>
-                                <input type="text" value="1">
-                                <button class="itemCounter__plus">+</button>
-                            </div>
-                            <span class="goodItem__price">1 000 руб.</span>
-                            <button class="goodItem__close">
-                                <i class="fas fa-times" aria-hidden="true"></i>
-                            </button>
-                        </figure>
+                        
                     </section>
                     <figure class="basketPage__freeShip orangeBlock">
                         <img src="img/deliveryMan.png" alt="">
@@ -62,7 +40,7 @@ include ('elements/header.php');
                         </figure>
                     </section>
                     <h2>Оформление заказа</h2>
-                    <form class="deliveryForm">
+                    <div class="deliveryForm">
                         <section class="deliveryForm__userInfo">
                             <input type="text" placeholder="Ваше имя*">
                             <input type="text" placeholder="Ваша фамилия*">
@@ -113,7 +91,7 @@ include ('elements/header.php');
                             </ul>
 
                             <section class="sendOrder">
-                                <button>Отправить заказ</button>
+                                <button onclick="order()">Отправить заказ</button>
                                 <span>Нажимая на кнопку «Отправить заказ», я соглашаюсь на обработку персональных данных и ознакомлен(а) с условиями конфиденциальности. Если у вас есть вопросы, позвоните нам по номеру 8-888-888-88-88.</span>
                             </section>
                         </section>
@@ -125,57 +103,7 @@ include ('elements/header.php');
         </section>
     </div>
     
-    <!-- [FOOTER] -->
-    <footer>
-        <div class="footer__wrapper">
-            <section class="footer__top">
-                <nav>
-                    <li><a href="#">Как заказать</a></li>
-                    <li><a href="#">Бонусная программа</a></li>
-                    <li><a href="#">Оплата и доставка</a></li>
-                    <li><a href="#">Гарантии и возврат</a></li>
-                    <li><a href="#">Вопрос-ответ</a></li>
-                </nav>
-                <nav>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                    <li><a href="#">Франшиза</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </nav>
-                <section class="footer__contacts">
-                    <ul class="number">
-                        <li><i class="fas fa-phone-alt"></i>8-888-888-88-88</li>
-                        <li><i class="fas fa-envelope"></i>frimis@gmail.com</li>
-                    </ul>
-                    <ul class="social">
-                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-odnoklassniki"></i></a></li>
-                    </ul>
-                </section>
-                <form action="#">
-                    <h4>Оформите подписку</h4>
-                    <input type="text" placeholder="Укажите e-mail">
-                    <input type="submit" value="Подписаться">
-                    <label>
-                        Нажимая на кнопку «Подписаться», я
-                        соглашаюсь на обработку моих персональных
-                        данных и ознакомлен(а) с условиями
-                        конфиденциальности.
-                    </label>
-                </form>
-            </section>
-            <section class="footer__info">
-                <span>
-                    © «Frimis» — интернет-магазин украшений и аксессуаров.<br>
-                    <a href="#">Политика конфиденциальности.</a>
-                </span>
-                <a href="#" class="fiveLogo">Разработка<br>и дизайн сайта «FIVE»</a>
-            </section>
-        </input>
-    </footer>
-    <!-- [/END FOOTER] -->
+    <?php include('elements/footer.php') ?>
 
     <!-- [SCRIPTS] -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -184,7 +112,91 @@ include ('elements/header.php');
 
     <!-- Custom -->
     <script>
-    
+    var basket = localStorage.getItem("basket");
+
+    var basketArray = { basket: [] };
+        
+        if (basket !== null && basket !== '') {
+            var basketArray = JSON.parse(basket);
+
+            basketArray.basket.forEach((el, index) => {
+                console.log(index);
+                $.get('/api/good.php?id=' + el.good_id, (res) => {
+                    if (!el.color && res.colors[0] !== null && res.colors[0] !== undefined) {
+                        el.color = res.colors[0].hex;
+                        basketArray.basket[index].color = '#' + res.colors[0].hex;
+                        localStorage.setItem('basket', JSON.stringify(basketArray));
+                    }
+                        
+                    if (!el.size && res.sizes[0] !== null && res.sizes[0] !== undefined) {
+                        el.size = res.sizes[0].name;
+                        basketArray.basket[index].size = res.sizes[0].name;
+                        localStorage.setItem('basket', JSON.stringify(basketArray));
+                    }
+
+                    var sizes = '';
+                    res.sizes.forEach((size) => {
+                        if (size.name != el.size) {
+                            sizes += `<option value="${size.name}">${size.name}</option>`;
+                            console.log('sz'+ el.size + ' ' + size.name)
+                        } else {
+                            console.log(size.name + ' ' + el.size)
+                            sizes += `<option value="${el.size}" selected="selected">${el.size}</option>`;
+                        }
+                    });
+                    $('.basketPage__itemList').append(`<figure class="goodItem" id="good${index}"> 
+                        <div class="goodItem__wrapper">
+                        <img src="` + el.photo + `" alt="">
+                        <figcaption>
+                        <a href=good.php?id="` + el.good_id + `">` + el.name + `</a>
+                        <span>Артикул: ` + el.art + `</span>
+                        </figcaption>
+                        </div>
+                        <span class="goodItem__color" style="background-color: ` + el.color + `;"></span>
+                        <select class="selectSize">
+                        ` + sizes + `
+                        </select>
+                        <div class="itemCounter">
+                        <button class="itemCounter__minus" onclick="decreaseQuantity(${index})">-</button>
+                        <input id="q${index}" type="text" value="` + el.quantity + `">
+                        <button class="itemCounter__plus" onclick="increaseQuantity(${index})">+</button>
+                        </div>
+                        <span class="goodItem__price">` + el.price + ` руб.</span>
+                        <button class="goodItem__close" onclick="removeElement(${index})">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        </button>
+                        </figure>
+                        `);      
+                });
+                      
+            });
+        }
+
+        function order() {
+            $.post("api/order.php", basketArray).done(function(data) {
+                console.log(data);
+            });
+        }
+
+        function increaseQuantity(i) {
+            basketArray.basket[i].quantity++;
+            $("#q" + i).val(basketArray.basket[i].quantity);
+            console.log(basketArray.basket[i].quantity);
+            localStorage.setItem('basket', JSON.stringify(basketArray));
+        }
+        function decreaseQuantity(i) {
+            if (basketArray.basket[i].quantity > 1) {
+                basketArray.basket[i].quantity--;
+                $("#q" + i).val(basketArray.basket[i].quantity);
+            }
+            console.log(basketArray.basket[i].quantity);
+            localStorage.setItem('basket', JSON.stringify(basketArray));
+        }
+        function removeElement(i) {
+            basketArray.basket.splice(i, 1); 
+            $("#good" + i).remove();
+            localStorage.setItem('basket', JSON.stringify(basketArray));
+        }
     $('.selectSize').selectmenu({
         classes: {
             'ui-selectmenu-button-closed': 'selectSize_closed',

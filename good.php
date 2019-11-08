@@ -194,20 +194,26 @@ include ('./elements/header.php');
         element.quantity = 1;
         element.color = color;
         element.size = size;
+        console.log(element.size + ' ' + element.color);
         var basket = localStorage.getItem("basket");
         var basketArray = { basket: [] };
         
         if (basket !== null && basket !== '') {
             var basketArray = JSON.parse(basket);
             var index = basketArray.basket.findIndex(el => el.good_id === element.good_id);
-            console.log(index)
-            if (index !== null && index !== -1) {
+            var colorIndex = basketArray.basket.findIndex(el => el.color === color);
+            var sizeIndex = basketArray.basket.findIndex(el => el.size === size);
+            
+            if (index !== null && index !== -1 && colorIndex !== null && colorIndex !== -1 && sizeIndex !== null && sizeIndex !== -1) {
+                console.log('in:' + index);
                 basketArray.basket[index].quantity = +basketArray.basket[index].quantity + 1;
+                console.log(element.size);
                 new Toast({
                     message: 'Товар успешно добавлен в корзину',
                     type: 'danger'
                 });
             } else {
+                console.log(element.size);
                 basketArray.basket.push(element);
                 new Toast({
                     message: 'Товар успешно добавлен в корзину',
@@ -215,6 +221,7 @@ include ('./elements/header.php');
                 });
             }
         } else {
+            console.log(element.size);
             basketArray.basket.push(element);
             new Toast({
                 message: 'Товар успешно добавлен в корзину',
