@@ -42,21 +42,21 @@ include ('elements/header.php');
                     <h2>Оформление заказа</h2>
                     <div class="deliveryForm">
                         <section class="deliveryForm__userInfo">
-                            <input type="text" placeholder="Ваше имя*">
-                            <input type="text" placeholder="Ваша фамилия*">
-                            <input type="text" placeholder="Ваш e-mail*">
-                            <input type="text" placeholder="Ваш телефон*">
-                            <input type="text" placeholder="Город*">
-                            <select class="selectType" name="">
+                            <input type="text" placeholder="Ваше имя*" id="name">
+                            <input type="text" placeholder="Ваша фамилия*" id="lastname">
+                            <input type="text" placeholder="Ваш e-mail*" id="email">
+                            <input type="text" placeholder="Ваш телефон*" id="phone">
+                            <input type="text" placeholder="Город*" id="city">
+                            <select class="selectType" name="" id="type">
                                 <option value="1">300 руб. / 2 р.дня / курьер</option>
                                 <option value="2">300 руб. / 2 р.дня / курьер</option>
                                 <option value="3">300 руб. / 2 р.дня / курьер</option>
                                 <option value="4">300 руб. / 2 р.дня / курьер</option>
                             </select>
                             <div class="deliveryForm__address">
-                                <input type="text" placeholder="Улица">
-                                <input type="text" placeholder="Дом">
-                                <input type="text" placeholder="Кв./офис">
+                                <input type="text" placeholder="Улица" id="type">
+                                <input type="text" placeholder="Дом" id="house">
+                                <input type="text" placeholder="Кв./офис" id="apt">
                             </div>
                         </section>
                         <section class="deliveryForm__promo">
@@ -66,7 +66,7 @@ include ('elements/header.php');
                                     <li><a href="">Потратить бонусные баллы</a><button class="helpBtn"></button></li>
                                 </ul>
                                 <div class="addBonus">
-                                    <input type="text" placeholder="Доступно 0 бонусов">
+                                    <input type="text" id="bonus" placeholder="Доступно 0 бонусов">
                                     <button>ОК</button>
                                 </div>
                             </section>
@@ -92,7 +92,7 @@ include ('elements/header.php');
 
                             <section class="sendOrder">
                                 <button onclick="order()">Отправить заказ</button>
-                                <span>Нажимая на кнопку «Отправить заказ», я соглашаюсь на обработку персональных данных и ознакомлен(а) с условиями конфиденциальности. Если у вас есть вопросы, позвоните нам по номеру 8-888-888-88-88.</span>
+                                <!-- <span>Нажимая на кнопку «Отправить заказ», я соглашаюсь на обработку персональных данных и ознакомлен(а) с условиями конфиденциальности. Если у вас есть вопросы, позвоните нам по номеру 8-888-888-88-88.</span> -->
                             </section>
                         </section>
                     </form>
@@ -173,6 +173,10 @@ include ('elements/header.php');
         }
 
         function order() {
+            var orderData = basketArray;
+            orderData.name = $('#name').val();
+            orderData.lastname = $('#lastname').val();
+            console.log()
             $.post("api/order.php", basketArray).done(function(data) {
                 console.log(data);
             });
