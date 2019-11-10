@@ -54,7 +54,7 @@ include ('elements/header.php');
                                 <option value="4">300 руб. / 2 р.дня / курьер</option>
                             </select>
                             <div class="deliveryForm__address">
-                                <input type="text" placeholder="Улица" id="type">
+                                <input type="text" placeholder="Улица" id="street">
                                 <input type="text" placeholder="Дом" id="house">
                                 <input type="text" placeholder="Кв./офис" id="apt">
                             </div>
@@ -78,7 +78,7 @@ include ('elements/header.php');
                                 </li>
                                 <li>
                                     <span class="blockPrice__caption">Сумма к оплате</span>
-                                    <span class="blockPrice__value">1 500 руб.</span>
+                                    <span class="blockPrice__value"> руб.</span>
                                 </li>
                                 <li>
                                     <span class="blockPrice__caption">Способ оплаты</span>
@@ -113,7 +113,7 @@ include ('elements/header.php');
     <!-- Custom -->
     <script>
     var basket = localStorage.getItem("basket");
-
+    var total = 0;
     var basketArray = { basket: [] };
         
         if (basket !== null && basket !== '') {
@@ -144,6 +144,8 @@ include ('elements/header.php');
                             sizes += `<option value="${el.size}" selected="selected">${el.size}</option>`;
                         }
                     });
+                    total = total + (+el.price) * (+el.quantity);
+                    $('.blockPrice__value').html(total);
                     $('.basketPage__itemList').append(`<figure class="goodItem" id="good${index}"> 
                         <div class="goodItem__wrapper">
                         <img src="` + el.photo + `" alt="">
@@ -172,11 +174,21 @@ include ('elements/header.php');
             });
         }
 
+        $('.blockPrice__value').html(total);
         function order() {
             var orderData = basketArray;
             orderData.name = $('#name').val();
             orderData.lastname = $('#lastname').val();
-            console.log()
+            orderData.email = $('#email').val();
+            orderData.phone = $('#phone').val();
+            orderData.city = $('#city').val();
+            orderData.street = $('#street').val();
+            orderData.house = $('#house').val();
+            orderData.apt = $('#apt').val();
+            orderData.bonus = $('#bonus').val();
+            orderData.payment = total - (+orderData.bonus);
+            orderData.total = total;
+
             $.post("api/order.php", basketArray).done(function(data) {
                 console.log(data);
             });
