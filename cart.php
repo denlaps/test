@@ -109,6 +109,7 @@ include ('elements/header.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/main.js"></script>
+    <script src="/js/toast.js"></script>
 
     <!-- Custom -->
     <script>
@@ -189,8 +190,15 @@ include ('elements/header.php');
             orderData.payment = total - (+orderData.bonus);
             orderData.total = total;
 
-            $.post("api/order.php", basketArray).done(function(data) {
-                console.log(data);
+            $.post("api/order.php", orderData).done(function(data) {
+                if (data.status == 1) {
+                    localStorage.setItem('basket','');
+                    basketArray = {};
+                    new Toast({
+                        message: 'Заказ успешно оформлен',
+                        type: 'danger'
+                    });
+                }
             });
         }
 

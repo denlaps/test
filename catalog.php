@@ -1,91 +1,22 @@
 <?php 
 include ('elements/header.php');
 ?>
-
         <section class="contentWrapper">
-            <!-- [LEFT SIDE MENU] -->
-            <aside>
-                <nav class="menuBar">
-                    <li><a href="#">НОВИНКИ</a></li>
-                    <li><a href="#">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
-                    <li><a href="#">РАСПРОДАЖА</a></li>
-
-                    <li><a href="#">Шапки</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Шарфы и платки</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Солнцезащитные платки</a></li>
-                    <li><a href="#">Ремни</a></li>
-                    <li><a href="#">Часы</a></li>
-                    <li><a href="#">Кошельки</a></li>
-                    <li><a href="#">Перчатки</a></li>
-                    <li><a href="#">Зонты</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Для волос</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Украшения</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Пляжные аксессуары</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Носки</a></li>
-                    <li><a href="#">Домашняя обувь</a></li>
-                    <li><a href="#">Маски карнавальные</a></li>
-
-                    <li>
-                        <a href="#" class="menuBar__more">ДЕТЯМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">МУЖЧИНАМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                </nav>
-            </aside>
-            <!-- [/END MENU] -->
-
+        <?php 
+            include ('./elements/sidebar.php');
+            if (isset($_GET["id"])) {
+                $category_id = $_GET["id"];
+            } else {
+                header('Location: 404.php');
+            }
+        ?>
             <!-- [RIGHT SIDE] -->
             <section class="mainContent">
                 <!-- [Head] -->
                 <nav class="minLinks">
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Каталог</a></li>
-                    <li><a href="#">Шапки</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/catalog.php">Каталог</a></li>
+                    <li><a href="/catalog.php?id=<?= $category_id ?>">Шапки</a></li>
                 </nav>
                 <h1>Шапки</h1>
                 <!-- [/End Head] -->
@@ -125,141 +56,7 @@ include ('elements/header.php');
 
                     <!-- [CATALOG] -->
                     <section class="catalogPage__wrapper">
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <a href="#">
-                                <img src="uploads/bigCap.jpg" alt="">
-                                <div class="goodPanel">
-                                    <button><i class="far fa-heart"></i></button>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <div class="goodTitle">
-                                    <a href="#">Шапка женская</a>
-                                    <span>999 руб.</span>
-                                </div>
-                                <button><i class="fas fa-shopping-basket"></i></button>
-                            </figcaption>
-                        </figure>
+                        
                     </section>
                     <!-- [/END CATALOG] -->
 
@@ -304,6 +101,36 @@ include ('elements/header.php');
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
+    nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&offset=0';
+    currentPage = 1;
+
+    loadMoreGoods();
+    function loadMoreGoods() {
+            nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&offset=0';
+            console.log('sd');
+            $.get(nextUrl, (res) => {
+                console.log(nextUrl);
+                res.data.forEach((el) => {
+                    console.log(el);
+                    $('.catalogPage__wrapper').append(`<figure>
+                    <a href="good.php?id=` + el.good_id + `">
+                    <img src="` + el.photo + `" alt="">
+                    <div class="goodPanel">
+                    <button><i class="far fa-heart"></i></button>
+                    </div>
+                    </a>
+                    <figcaption>
+                    <div class="goodTitle">
+                    <a href="#">` + el.name + `</a>
+                    <span>` + el.price + ` руб.</span>
+                    </div>
+                    <button><i class="fas fa-shopping-basket"></i></button>
+                    </figcaption>
+                    </figure>`);
+                });
+                nextUrl = res.next_url;
+            });
+    }
     /* == [SELECT UI] == */
     $('.chLook__list').selectmenu({
         classes: {

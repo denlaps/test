@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
--- Host: onoartsr.beget.tech    Database: 
+-- Host: onoartsr.beget.tech    Database: onoartsr_frimis
 -- ------------------------------------------------------
 -- Server version	5.7.21-20-beget-5.7.21-20-1-log
 
@@ -14,14 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Current Database: `onoartsr_frimis`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `onoartsr_frimis` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `onoartsr_frimis`;
 
 --
 -- Table structure for table `category`
@@ -436,6 +428,7 @@ CREATE TABLE `order` (
   `bonus` decimal(10,0) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `payment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `house` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -570,4 +563,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-08 16:47:20
+-- Dump completed on 2019-11-10 15:47:17
