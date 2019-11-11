@@ -424,15 +424,13 @@ CREATE TABLE `order` (
   `street` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `apt` int(11) DEFAULT NULL,
-  `price` decimal(10,0) DEFAULT NULL,
   `bonus` decimal(10,0) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `payment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `house` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,6 +439,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:36','2019-11-11 11:32:36'),(2,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:39','2019-11-11 11:32:39'),(3,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:39:46','2019-11-11 11:39:46'),(4,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:41:03','2019-11-11 11:41:03'),(5,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:25','2019-11-11 11:48:25'),(6,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:46','2019-11-11 11:48:46'),(7,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:45','2019-11-11 11:51:45'),(8,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:56','2019-11-11 11:51:56'),(9,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:59','2019-11-11 11:51:59'),(10,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:53:54','2019-11-11 11:53:54'),(11,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:04:48','2019-11-11 12:04:48'),(12,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:19:22','2019-11-11 12:19:22'),(13,'ывавыаывавы','выавыаыв','ывавы','аывавыа','tp','ываыва',33,0,33,4997,'4964','2019-11-11 12:29:46','2019-11-11 12:29:46');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,6 +454,9 @@ CREATE TABLE `order_good` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `good_id` int(11) DEFAULT NULL,
+  `color` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -462,7 +464,7 @@ CREATE TABLE `order_good` (
   KEY `order_good_good_id_fk` (`good_id`),
   CONSTRAINT `order_good_good_id_fk` FOREIGN KEY (`good_id`) REFERENCES `good` (`id`),
   CONSTRAINT `order_good_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -471,6 +473,7 @@ CREATE TABLE `order_good` (
 
 LOCK TABLES `order_good` WRITE;
 /*!40000 ALTER TABLE `order_good` DISABLE KEYS */;
+INSERT INTO `order_good` VALUES (1,11,2,'#00FF00',30,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(2,11,1,'#000000',52,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(3,11,1,'#FF0000',54,1,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(4,12,2,'#00FF00',30,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(5,12,1,'#000000',52,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(6,12,1,'#FF0000',54,1,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(7,13,2,'#00FF00',30,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(8,13,1,'#000000',52,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(9,13,1,'#FF0000',54,1,'2019-11-11 12:29:46','2019-11-11 12:29:46');
 /*!40000 ALTER TABLE `order_good` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,4 +566,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-10 15:47:17
+-- Dump completed on 2019-11-11 16:22:47
