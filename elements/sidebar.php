@@ -5,9 +5,9 @@
  <!-- [LEFT SIDE MENU] -->
  <aside>
                 <nav class="menuBar">
-                    <li><a href="#">НОВИНКИ</a></li>
-                    <li><a href="#">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
-                    <li><a href="#">РАСПРОДАЖА</a></li>
+                    <li><a href="/category.php?id=all&new=1">НОВИНКИ</a></li>
+                    <li><a href="/category.php?id=all&best=1">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
+                    <li><a href="/category.php?id=all&sale=1">РАСПРОДАЖА</a></li>
                     <?php while ($categories_row = mysqli_fetch_array($categories_res)) { 
                         if ($categories_row['is_full_on_sidebar'] == 1) { ?>
                             <?php $cat_id = $categories_row['id']; $goods_res = mysqli_query($db, "SELECT * FROM good WHERE category_id = $cat_id"); ?>

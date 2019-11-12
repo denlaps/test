@@ -4,10 +4,62 @@ include ('elements/header.php');
         <section class="contentWrapper">
         <?php 
             include ('./elements/sidebar.php');
+            $cf = " WHERE good.id > 0 ";
             if (isset($_GET["id"])) {
                 $category_id = $_GET["id"];
+                if ($category_id == "all") {
+                    $cf = " WHERE good.id > 0 ";
+                } else {
+                    $cf = " WHERE good.category_id = $category_id ";
+                }
             } else {
-                header('Location: 404.php');
+                $category_id = "all";
+            }
+
+            $search = "";
+            $query = 0;
+            $sale = 0;
+            $new = 0;
+            $best = 0;
+            if (isset($_GET["search"])) {
+                $query = $_GET["search"];
+                $search = " AND good.name LIKE '%$query%' ";
+            }
+            $q = "";
+
+            if (isset($_GET["sale"])) {
+                $sale = 1;
+                $new = 0;
+                $best = 0;
+                $q =  "AND good.is_on_sale = $sale ";
+            } 
+
+            if (isset($_GET["new"])) {
+                $sale = 0;
+                $new = 1;
+                $best = 0;
+                $q =  "AND good.new = $new ";
+            }
+
+            if (isset($_GET["best"])) {
+                $sale = 0;
+                $new = 0;
+                $best = 1;
+                $q =  "AND good.best = $best ";
+            }
+
+            $good_colors_res = mysqli_query($db, "SELECT DISTINCT (color_name) FROM good_color");
+            if ($category_id != "all") {
+                $category_res = mysqli_query($db, "SELECT * FROM category WHERE id = $category_id");
+                $category_row = mysqli_fetch_array($category_res);
+            }
+            $good_res = mysqli_query($db, "SELECT COUNT(*) AS count FROM good LEFT JOIN good_photo ON good.id = good_photo.good_id AND good_photo.is_main = 1".$cf.$q.$search);
+            $good_count_row = mysqli_fetch_array($good_res);
+            $total_pages = 1;
+            if ((int)$good_count_row['count'] % 12 > 0) {
+                $total_pages = floor($good_count_row['count'] / 12) + 1;
+            } else {
+                $total_pages = floor($good_count_row['count'] / 12);
             }
         ?>
             <!-- [RIGHT SIDE] -->
@@ -15,10 +67,10 @@ include ('elements/header.php');
                 <!-- [Head] -->
                 <nav class="minLinks">
                     <li><a href="/">Главная</a></li>
-                    <li><a href="/catalog.php">Каталог</a></li>
-                    <li><a href="/catalog.php?id=<?= $category_id ?>">Шапки</a></li>
+                    <li><a href="/category.php">Каталог</a></li>
+                    <?php if ($category_id != "all") { ?><li><a href="/catalog.php?id=<?= $category_id ?>"><?= $category_row['name'] ?></a></li><?php } ?>
                 </nav>
-                <h1>Шапки</h1>
+                <h1><?php if ($category_id != "all") { echo $category_row['name']; } ?></h1>
                 <!-- [/End Head] -->
 
                 <!-- [MAIN CONTENT] -->
@@ -39,17 +91,17 @@ include ('elements/header.php');
                         <section class="catalogPage__chColor">
                             <span>Цвет:</span>
                             <select name="chooseLook" class="chLook__list">
-                                <option value="">черный</option>
-                                <option value="">серый</option>
-                                <option value="">жёлтый</option>
-                                <option value="">розовый</option>
+                                <?php while ($color_row = mysqli_fetch_array($good_colors_res)) { ?>
+                                    <option value=""><?= $color_row['color_name'] ?></option>
+                                <?php } ?>
+                                <option value="">любой</option>
                             </select>
                         </section>
                         <ul>
-                            <li><a href="#">New</a></li>
-                            <li><a href="#">Sale</a></li>
-                            <li><a href="#">Best</a></li>
-                            <li><a href="#" class="active">Все товары</a></li>
+                            <li><a id="new" href="/category.php?id=<?= $category_id ?>&new=1" <?php if (isset($_GET["new"])) { ?>class="active"<?php  } ?>>New</a></li>
+                            <li><a id="sale" href="/category.php?id=<?= $category_id ?>&sale=1" <?php if (isset($_GET["sale"])) { ?>class="active"<?php  } ?>>Sale</a></li>
+                            <li><a id="best" href="/category.php?id=<?= $category_id ?>&best=1" <?php if (isset($_GET["best"])) { ?>class="active"<?php  } ?>>Best</a></li>
+                            <li><a id="all" href="/category.php?id=<?= $category_id ?>" <?php if (!isset($_GET["new"]) && !isset($_GET["sale"]) && !isset($_GET["best"])) { ?>class="active"<?php  } ?>>Все товары</a></li>
                         </ul>
                     </menu>
                     <!-- [/END FILTER] -->
@@ -60,17 +112,15 @@ include ('elements/header.php');
                     </section>
                     <!-- [/END CATALOG] -->
 
-                    <button class="showMore">Показать ещё</button>
+                    <button class="showMore" onclick="loadMoreGoods()">Показать ещё</button>
 
                     <!-- [PAGE NAV] -->
                     <menu class="catalogPage__pageNav">
-                        <button class="navBtn__prev"></button>
-                        <li><button>1</button></li>
-                        <li><button>2</button></li>
-                        <li><button class="active">3</button></li>
-                        <li><button>4</button></li>
-                        <li><button>5</button></li>
-                        <button class="navBtn__next"></button>
+                        <button class="navBtn__prev" onclick="loadPage(--currentPage)"></button>
+                        <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                            <li><button class="pagin" id="page<?= $i ?>" onclick="loadPage(<?= $i ?>)"><?= $i ?></button></li>
+                        <?php } ?>
+                        <button class="navBtn__next" onclick="loadPage(++currentPage)"></button>
                     </menu>
                     <!-- [/END PAGE NAV] -->
 
@@ -101,15 +151,21 @@ include ('elements/header.php');
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-    nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&offset=0';
+    console.log('<?= $query ?>');
+    nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&offset=0&sale=<?= $sale ?>&new=<?= $new ?>&best=<?= $best ?>&search=<?= $query ?>';
     currentPage = 1;
-
+    $(".navBtn__prev").hide();
     loadMoreGoods();
     function loadMoreGoods() {
-            nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&offset=0';
             console.log('sd');
             $.get(nextUrl, (res) => {
                 console.log(nextUrl);
+                if (res.data.length < 12) {
+                    $('.showMore').hide();
+                } else {
+                    $('.showMore').show();
+                }
+
                 res.data.forEach((el) => {
                     console.log(el);
                     $('.catalogPage__wrapper').append(`<figure>
@@ -128,8 +184,28 @@ include ('elements/header.php');
                     </figcaption>
                     </figure>`);
                 });
+                $(".pagin").removeClass("active");
+                $("#page" + res.page).addClass("active");
+                currentPage = res.page;
+                if (+currentPage > 1) {
+                    $(".navBtn__prev").show();
+                } else {
+                    $(".navBtn__prev").hide();
+                }
+                if (+currentPage < +<?= $total_pages ?>) {
+                    $(".navBtn__next").show();
+                } else {
+                    $(".navBtn__next").hide();
+                }
                 nextUrl = res.next_url;
+                console.log(nextUrl);
             });
+    }
+
+    function loadPage(page) {
+            nextUrl = '/api/category.php?id=<?= $category_id ?>&limit=12&page=' + page + '&sale=<?= $sale ?>&new=<?= $new ?>&best=<?= $best ?>&search=<?= $query ?>';
+            $('.catalogPage__wrapper').html('');
+            loadMoreGoods();
     }
     /* == [SELECT UI] == */
     $('.chLook__list').selectmenu({

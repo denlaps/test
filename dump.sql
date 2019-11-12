@@ -120,9 +120,9 @@ CREATE TABLE `good` (
   `look_id` int(11) DEFAULT NULL,
   `collection_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `is_on_sale` tinyint(1) DEFAULT NULL,
-  `best` tinyint(1) DEFAULT NULL,
-  `new` tinyint(1) DEFAULT NULL,
+  `is_on_sale` tinyint(1) DEFAULT '0',
+  `best` tinyint(1) DEFAULT '0',
+  `new` tinyint(1) DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -130,7 +130,7 @@ CREATE TABLE `good` (
   KEY `good_collection_id_fk` (`collection_id`),
   CONSTRAINT `good_category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `good_collection_id_fk` FOREIGN KEY (`collection_id`) REFERENCES `collection` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +139,7 @@ CREATE TABLE `good` (
 
 LOCK TABLES `good` WRITE;
 /*!40000 ALTER TABLE `good` DISABLE KEYS */;
-INSERT INTO `good` VALUES (1,'Шарф','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',999,0,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1,'111111',NULL,1,2,0,NULL,NULL,'2019-11-05 19:01:16','2019-11-05 19:01:18'),(2,'Шапка','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,NULL,NULL,'2019-11-06 17:09:54','2019-11-06 17:09:56');
+INSERT INTO `good` VALUES (1,'Шарф','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',999,0,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1,'111111',NULL,1,2,1,1,1,'2019-11-05 19:01:16','2019-11-05 19:01:18'),(2,'Шапка','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(3,'sdfee','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(4,'ee','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(5,'dsf','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(6,'defdsfsdf','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(7,'m,.','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(8,'dfgdfg','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,1,0,1,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(9,',m.m,.','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(10,'rytrtyrty','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(11,'ewewewewe','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(12,'jkjkjkjk','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(13,'qwe','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(14,'jkjk','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(15,'88','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(16,'d','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(17,'gf','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,1,1,1,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(18,'12','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(19,'f','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(20,'g','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,1,0,1,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(21,'h','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(22,'jf','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(23,'hj','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,1,1,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(24,'444','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(25,'sdfsdfsdfs444','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56'),(26,'555','Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',1000,1999,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, suscipit, similique',NULL,NULL,NULL,1,1,0,0,0,'2019-11-06 17:09:54','2019-11-06 17:09:56');
 /*!40000 ALTER TABLE `good` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `good_color` (
   PRIMARY KEY (`id`),
   KEY `good_color_good_id_fk` (`good_id`),
   CONSTRAINT `good_color_good_id_fk` FOREIGN KEY (`good_id`) REFERENCES `good` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `good_color` (
 
 LOCK TABLES `good_color` WRITE;
 /*!40000 ALTER TABLE `good_color` DISABLE KEYS */;
-INSERT INTO `good_color` VALUES (1,1,'ЧОРНИЙ','000000',0,'2019-11-05 19:01:53','2019-11-05 19:01:55'),(2,1,'КРАСНИЙ','FF0000',1,'2019-11-06 16:55:48','2019-11-06 16:55:50'),(3,2,'ЗЕЛЕНИЙ','00FF00',1,'2019-11-08 15:38:04','2019-11-08 15:38:06');
+INSERT INTO `good_color` VALUES (1,1,'ЧОРНИЙ','000000',0,'2019-11-05 19:01:53','2019-11-05 19:01:55'),(2,1,'КРАСНИЙ','FF0000',1,'2019-11-06 16:55:48','2019-11-06 16:55:50'),(3,2,'ЗЕЛЕНИЙ','00FF00',1,'2019-11-08 15:38:04','2019-11-08 15:38:06'),(4,2,'ЧОРНИЙ','000000',0,'2019-11-12 14:41:22','2019-11-12 14:41:19');
 /*!40000 ALTER TABLE `good_color` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,7 +285,7 @@ CREATE TABLE `instagram` (
 
 LOCK TABLES `instagram` WRITE;
 /*!40000 ALTER TABLE `instagram` DISABLE KEYS */;
-INSERT INTO `instagram` VALUES (1,'2263947402.1677ed0.5e9b6050e2d342d8b2f94dac8e08389d','2263947402','2019-11-07 11:14:18','2019-11-07 11:14:20');
+INSERT INTO `instagram` VALUES (1,'','2263947402','2019-11-07 11:14:18','2019-11-07 11:14:20');
 /*!40000 ALTER TABLE `instagram` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -478,6 +478,30 @@ INSERT INTO `order_good` VALUES (1,11,2,'#00FF00',30,2,'2019-11-11 12:04:48','20
 UNLOCK TABLES;
 
 --
+-- Table structure for table `page`
+--
+
+DROP TABLE IF EXISTS `page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `page`
+--
+
+LOCK TABLES `page` WRITE;
+/*!40000 ALTER TABLE `page` DISABLE KEYS */;
+/*!40000 ALTER TABLE `page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `review`
 --
 
@@ -566,4 +590,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-11 16:22:47
+-- Dump completed on 2019-11-12 17:35:30
