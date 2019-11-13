@@ -100,7 +100,7 @@ include ('elements/header.php');
                                     понравился ли вам товар,<br>
                                     удобно ли было заказывать.
                                 </span>
-                                <a href="#">Написать отзыв</a>
+                                <a href="#" data-modal=".modal__sendReview">Написать отзыв</a>
                             </figcaption>
                         </div>
                     </figure>
@@ -203,6 +203,31 @@ include ('elements/header.php');
         </input>
     </footer>
     <!-- [/END FOOTER] -->
+    
+<!-- [MODALS] -->
+<div class="modalWrapper">
+
+<section class="modal modal_medium modal__sendReview">
+    <h3>Оставить отзыв</h3>
+    <form action="">
+        <div class="form-box">
+            <input type="text" placeholder="Ваше имя">
+            <input type="text" placeholder="Ваш телефон | e-mail">
+            <input type="text" placeholder="Ваш город">
+            <input type="text" placeholder="Ваше сообщение">
+        </div>
+        <div class="form-box">
+            <button class="sendFile">Выбрать файл</button>
+            <input type="file">
+            <input type="submit" value="Отправить">
+        </div>
+        <span class="uText">Нажимая на кнопку «Отправить», я соглашаюсь на обработку персональных данных и ознакомлен(а) с условиями конфиденциальности.</span>
+    </form>
+</section>
+
+</div>
+<!-- [/END MODALS] -->
+
 
     <!-- [SCRIPTS] -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
