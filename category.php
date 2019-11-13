@@ -142,7 +142,7 @@ include ('elements/header.php');
             <!-- [/END RIGHT] -->
         </section>
     </div>
-    
+    <?php include('elements/footer.php'); ?>
   
 
     <!-- [SCRIPTS] -->
@@ -157,7 +157,6 @@ include ('elements/header.php');
     $(".navBtn__prev").hide();
     loadMoreGoods();
     function loadMoreGoods() {
-            console.log('sd');
             $.get(nextUrl, (res) => {
                 console.log(nextUrl);
                 if (res.data.length < 12) {
@@ -165,7 +164,7 @@ include ('elements/header.php');
                 } else {
                     $('.showMore').show();
                 }
-
+                console.log(res);
                 res.data.forEach((el) => {
                     console.log(el);
                     $('.catalogPage__wrapper').append(`<figure>

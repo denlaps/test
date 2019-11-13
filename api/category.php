@@ -4,7 +4,7 @@
     $cf = " WHERE good.id > 0 ";
     $search = "";
     $query = 0;
-    if (isset($_GET["search"]) && $_GET["search"] !== 0) {
+    if (isset($_GET["search"]) && $_GET["search"] != '0') {
         $query = $_GET["search"];
         $search = " AND good.name LIKE '%$query%' ";
     }

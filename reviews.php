@@ -1,5 +1,5 @@
 <?php 
-include ('header.php');
+include ('elements/header.php');
 ?>
         <section class="contentWrapper">
             <!-- [LEFT SIDE MENU] -->

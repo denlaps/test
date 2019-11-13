@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="libs/owlcarousel/owl.theme.default.min.css">
     <script src="https://kit.fontawesome.com/c6f437d80c.js" crossorigin="anonymous"></script>
+    <script>
+        function search() {
+            var q = $('#searchInput').val();
+            if (q != '') {
+                window.location.href = '/search.php?search=' + q;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="mainWrapper">
@@ -46,8 +54,8 @@
                 <menu>
                     <li>
                         <form class="searchBox" action="">
-                            <input type="text" placeholder="Введите товар...">
-                            <button><i class="fas fa-search"></i></button>
+                            <input id="searchInput" type="text" placeholder="Введите товар...">
+                            <button onclick="search()"><i class="fas fa-search"></i></button>
                         </form>
                     </li>
                     <li>
@@ -89,6 +97,8 @@
                     </li>
                 </menu>
             </section>
+            <script>
+            </script>
             <!-- [/End Panel] -->
         </header>
         <!-- [/END HEAD] -->
