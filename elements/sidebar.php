@@ -1,4 +1,4 @@
- <?php
+<?php
     include ("db.php");
     $categories_res = mysqli_query($db, "SELECT * FROM category");
 ?>

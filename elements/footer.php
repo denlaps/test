@@ -35,7 +35,7 @@
                     <li><a href="qaPage.php">Вопрос-ответ</a></li>
                 </nav>
                 <nav>
-                    <li><a href="about.php">О компании</a></li>
+                    <li><a href="/m/aboutUs.php">О компании</a></li>
                     <li><a href="reviews.php">Отзывы</a></li>
                     <li><a href="franchise.php">Франшиза</a></li>
                     <li><a href="contacts.php">Контакты</a></li>
