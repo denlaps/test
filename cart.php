@@ -123,28 +123,30 @@ include ('elements/header.php');
             basketArray.basket.forEach((el, index) => {
                 console.log(index);
                 $.get('/api/good.php?id=' + el.good_id, (res) => {
-                    if (!el.color && res.colors[0] !== null && res.colors[0] !== undefined) {
+                    if (!el.color && res.colors !== null && res.colors[0] !== null && res.colors[0] !== undefined) {
                         el.color = res.colors[0].hex;
                         basketArray.basket[index].color = '#' + res.colors[0].hex;
                         localStorage.setItem('basket', JSON.stringify(basketArray));
                     }
                         
-                    if (!el.size && res.sizes[0] !== null && res.sizes[0] !== undefined) {
+                    if (!el.size && res.sizes !== null && res.sizes[0] !== null && res.sizes[0] !== undefined) {
                         el.size = res.sizes[0].name;
                         basketArray.basket[index].size = res.sizes[0].name;
                         localStorage.setItem('basket', JSON.stringify(basketArray));
                     }
 
                     var sizes = '';
-                    res.sizes.forEach((size) => {
-                        if (size.name != el.size) {
-                            sizes += `<option value="${size.name}">${size.name}</option>`;
-                            console.log('sz'+ el.size + ' ' + size.name)
-                        } else {
-                            console.log(size.name + ' ' + el.size)
-                            sizes += `<option value="${el.size}" selected="selected">${el.size}</option>`;
-                        }
-                    });
+                    if(res.sizes !== null) {
+                        res.sizes.forEach((size) => {
+                            if (size.name != el.size) {
+                                sizes += `<option value="${size.name}">${size.name}</option>`;
+                                console.log('sz'+ el.size + ' ' + size.name)
+                            } else {
+                                console.log(size.name + ' ' + el.size)
+                                sizes += `<option value="${el.size}" selected="selected">${el.size}</option>`;
+                            }
+                        });
+                    }
                     total = total + (+el.price) * (+el.quantity);
                     $('.blockPrice__value').html(total);
                     $('.basketPage__itemList').append(`<figure class="goodItem" id="good${index}"> 
@@ -194,10 +196,7 @@ include ('elements/header.php');
                 if (data.status == 1) {
                     localStorage.setItem('basket','');
                     basketArray = {};
-                    new Toast({
-                        message: 'Заказ успешно оформлен',
-                        type: 'danger'
-                    });
+                    window.location.href = 'thanks.php';
                 }
             });
         }

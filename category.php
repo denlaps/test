@@ -126,15 +126,15 @@ include ('elements/header.php');
 
                     <section class="bottomSlider">
                         <h2>Другие образы</h2>
+                        
                         <div class="bottomSlider__wrapper owl-carousel">
-                            <a href="#"><img src="uploads/sliderGirl1.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl3.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl1.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl3.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                        </div>
+                            <?php
+                                 $look_res = mysqli_query($db, "SELECT l.*, lp.photo FROM look as l LEFT JOIN look_photo as lp ON l.id = lp.look_id AND lp.is_main = 1");
+                                 while ($look_row = mysqli_fetch_array($look_res)) {
+                            ?>
+                                <a href="looks.php?id=<?= $look_row['id'] ?>"><img src="<?= $look_row['photo'] ?>" alt="" height="300px"></a>
+                            <?php } ?>
+                        </div>  
                     </section>
                 </main>
                 <!-- [/END CONTENT] -->
@@ -167,19 +167,22 @@ include ('elements/header.php');
                 console.log(res);
                 res.data.forEach((el) => {
                     console.log(el);
+                    if (el.photo == null) {
+                        el.photo = 'img/box.jpg';
+                    }
                     $('.catalogPage__wrapper').append(`<figure>
-                    <a href="good.php?id=` + el.good_id + `">
+                    <a href="good.php?id=` + el.id + `">
                     <img src="` + el.photo + `" alt="">
                     <div class="goodPanel">
-                    <button><i class="far fa-heart"></i></button>
+                    <button onclick='putToChoosen(\`${JSON.stringify(el)}\`)'><i class="far fa-heart"></i></button>
                     </div>
                     </a>
                     <figcaption>
                     <div class="goodTitle">
-                    <a href="#">` + el.name + `</a>
+                    <a href="good.php?id=` + el.id + `">` + el.name + `</a>
                     <span>` + el.price + ` руб.</span>
                     </div>
-                    <button><i class="fas fa-shopping-basket"></i></button>
+                    <button onclick='putToBasket(\`${JSON.stringify(el)}\`, \`\`, \`\`)'><i class="fas fa-shopping-basket"></i></button>
                     </figcaption>
                     </figure>`);
                 });
@@ -199,6 +202,75 @@ include ('elements/header.php');
                 nextUrl = res.next_url;
                 console.log(nextUrl);
             });
+    }
+
+    function putToBasket(element, size, color) {
+        var element = JSON.parse(element);
+        element.quantity = 1;
+        element.color = color;
+        element.size = size;
+        console.log(element.size + ' ' + element.color);
+        var basket = localStorage.getItem("basket");
+        var basketArray = { basket: [] };
+        
+        if (basket !== null && basket !== '') {
+            var basketArray = JSON.parse(basket);
+            var index = basketArray.basket.findIndex(el => el.good_id === element.good_id);
+            var colorIndex = basketArray.basket.findIndex(el => el.color === color);
+            var sizeIndex = basketArray.basket.findIndex(el => el.size === size);
+            
+            if (index !== null && index !== -1 && colorIndex !== null && colorIndex !== -1 && sizeIndex !== null && sizeIndex !== -1) {
+                console.log('in:' + index);
+                basketArray.basket[index].quantity = +basketArray.basket[index].quantity + 1;
+                console.log(element.size);
+                new Toast({
+                    message: 'Товар успешно добавлен в корзину',
+                    type: 'danger'
+                });
+            } else {
+                console.log(element.size);
+                basketArray.basket.push(element);
+                new Toast({
+                    message: 'Товар успешно добавлен в корзину',
+                    type: 'danger'
+                });
+            }
+        } else {
+            console.log(element.size);
+            basketArray.basket.push(element);
+            new Toast({
+                message: 'Товар успешно добавлен в корзину',
+                type: 'danger'
+            });
+        }
+        
+        localStorage.setItem('basket', JSON.stringify(basketArray));
+    }
+    
+    function putToChoosen(element) {
+        var element = JSON.parse(element);
+        var choosen = localStorage.getItem("choosen");
+        var choosenArray = { choosen: [] };
+        
+        if (choosen !== null && choosen !== '') {
+            var choosenArray = JSON.parse(choosen);
+            var index = choosenArray.choosen.findIndex(el => el.good_id === element.good_id);
+            if (index === null || index === -1) {
+                choosenArray.choosen.push(element);
+                new Toast({
+                    message: 'Товар успешно добавлен в избранное',
+                    type: 'danger'
+                });
+            } 
+        } else {
+            choosenArray.choosen.push(element);
+            new Toast({
+                    message: 'Товар успешно добавлен в избранное',
+                    type: 'danger'
+            });
+        }
+        
+        localStorage.setItem('choosen', JSON.stringify(choosenArray));
     }
 
     function loadPage(page) {

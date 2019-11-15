@@ -434,7 +434,7 @@ CREATE TABLE `order` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -443,7 +443,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:36','2019-11-11 11:32:36'),(2,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:39','2019-11-11 11:32:39'),(3,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:39:46','2019-11-11 11:39:46'),(4,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:41:03','2019-11-11 11:41:03'),(5,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:25','2019-11-11 11:48:25'),(6,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:46','2019-11-11 11:48:46'),(7,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:45','2019-11-11 11:51:45'),(8,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:56','2019-11-11 11:51:56'),(9,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:59','2019-11-11 11:51:59'),(10,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:53:54','2019-11-11 11:53:54'),(11,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:04:48','2019-11-11 12:04:48'),(12,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:19:22','2019-11-11 12:19:22'),(13,'ывавыаывавы','выавыаыв','ывавы','аывавыа','tp','ываыва',33,0,33,4997,'4964','2019-11-11 12:29:46','2019-11-11 12:29:46');
+INSERT INTO `order` VALUES (1,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:36','2019-11-11 11:32:36'),(2,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:32:39','2019-11-11 11:32:39'),(3,'Имя','Фамилия','+79991008820','Херов','тип','ул',3,3,3,3,'3','2019-11-11 11:39:46','2019-11-11 11:39:46'),(4,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:41:03','2019-11-11 11:41:03'),(5,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:25','2019-11-11 11:48:25'),(6,'sdfsd','fsdfsd','fdsf','sdfdsf','tp','dsfdsfsd',23,0,233,4997,'4764','2019-11-11 11:48:46','2019-11-11 11:48:46'),(7,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:45','2019-11-11 11:51:45'),(8,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:56','2019-11-11 11:51:56'),(9,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:51:59','2019-11-11 11:51:59'),(10,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 11:53:54','2019-11-11 11:53:54'),(11,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:04:48','2019-11-11 12:04:48'),(12,'dfgdf','gdfgdf','gdfg','dfgdfg','tp','fgdfg',33,0,333,4997,'4664','2019-11-11 12:19:22','2019-11-11 12:19:22'),(13,'ывавыаывавы','выавыаыв','ывавы','аывавыа','tp','ываыва',33,0,33,4997,'4964','2019-11-11 12:29:46','2019-11-11 12:29:46'),(14,'dfgdfg','dfgdfg','dfgdf','gdfgdfg','tp','dfgdfg',0,0,6546,29000,'22454','2019-11-15 14:40:14','2019-11-15 14:40:14');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,7 +468,7 @@ CREATE TABLE `order_good` (
   KEY `order_good_good_id_fk` (`good_id`),
   CONSTRAINT `order_good_good_id_fk` FOREIGN KEY (`good_id`) REFERENCES `good` (`id`),
   CONSTRAINT `order_good_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,7 +477,7 @@ CREATE TABLE `order_good` (
 
 LOCK TABLES `order_good` WRITE;
 /*!40000 ALTER TABLE `order_good` DISABLE KEYS */;
-INSERT INTO `order_good` VALUES (1,11,2,'#00FF00',30,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(2,11,1,'#000000',52,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(3,11,1,'#FF0000',54,1,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(4,12,2,'#00FF00',30,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(5,12,1,'#000000',52,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(6,12,1,'#FF0000',54,1,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(7,13,2,'#00FF00',30,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(8,13,1,'#000000',52,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(9,13,1,'#FF0000',54,1,'2019-11-11 12:29:46','2019-11-11 12:29:46');
+INSERT INTO `order_good` VALUES (1,11,2,'#00FF00',30,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(2,11,1,'#000000',52,2,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(3,11,1,'#FF0000',54,1,'2019-11-11 12:04:48','2019-11-11 12:04:48'),(4,12,2,'#00FF00',30,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(5,12,1,'#000000',52,2,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(6,12,1,'#FF0000',54,1,'2019-11-11 12:19:22','2019-11-11 12:19:22'),(7,13,2,'#00FF00',30,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(8,13,1,'#000000',52,2,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(9,13,1,'#FF0000',54,1,'2019-11-11 12:29:46','2019-11-11 12:29:46'),(10,14,2,'#000000',30,28,'2019-11-15 14:40:14','2019-11-15 14:40:14'),(11,14,2,'#00FF00',30,1,'2019-11-15 14:40:14','2019-11-15 14:40:14');
 /*!40000 ALTER TABLE `order_good` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,8 +492,11 @@ CREATE TABLE `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `content` text,
+  `identifier` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,6 +505,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
+INSERT INTO `page` VALUES (1,'О нас','Контент','about','2019-11-15 10:33:10','2019-11-15 10:33:12'),(2,'Оплата','Контент','pay','2019-11-15 11:47:16','2019-11-15 11:47:19'),(3,'Гарантии','Контент','guarantee','2019-11-15 11:47:44','2019-11-15 11:47:45'),(4,'Возврат','Контент','refund','2019-11-15 11:48:00','2019-11-15 11:48:02'),(5,'Бонусная программа','Контент','bonus','2019-11-15 11:48:31','2019-11-15 11:48:33');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -517,10 +521,11 @@ CREATE TABLE `review` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `review` text COLLATE utf8_unicode_ci,
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -529,6 +534,7 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
+INSERT INTO `review` VALUES (1,'sdfsdfsd','sfdfdsfdsf','sdfdsfs','sdfsdf','2019-11-14 15:38:44','2019-11-14 15:38:44'),(2,'dsfsdf','dsfsdf','dsfdsf','sdfsdf','2019-11-14 15:39:45','2019-11-14 15:39:45'),(3,'sdfsdf','sdfsdfdsf','sdfsdfdsf','dsfsdf','2019-11-14 15:40:38','2019-11-14 15:40:38'),(4,'dsfdsfs','sdfdsfsdf','sdfdsfsdf','sdfdsf','2019-11-14 15:41:30','2019-11-14 15:41:30'),(5,'sdfdsf','sdfsdfdsf','dsfdsf','sdfsdfdsf','2019-11-14 15:42:08','2019-11-14 15:42:08'),(6,'sdfsdf','sdfsdfsdf','sdfsdf','sdfsdf','2019-11-14 15:46:10','2019-11-14 15:46:10');
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -573,7 +579,7 @@ CREATE TABLE `subscriber` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -582,6 +588,7 @@ CREATE TABLE `subscriber` (
 
 LOCK TABLES `subscriber` WRITE;
 /*!40000 ALTER TABLE `subscriber` DISABLE KEYS */;
+INSERT INTO `subscriber` VALUES (1,'pitt.asv@yandex.ru','2019-11-15 11:44:09','2019-11-15 11:44:09'),(2,'dsadsa@dsfdsf','2019-11-15 11:46:22','2019-11-15 11:46:22'),(3,'','2019-11-15 15:43:23','2019-11-15 15:43:23'),(4,'','2019-11-15 15:44:26','2019-11-15 15:44:26'),(5,'qwe','2019-11-15 16:19:54','2019-11-15 16:19:54'),(6,'','2019-11-15 16:19:56','2019-11-15 16:19:56');
 /*!40000 ALTER TABLE `subscriber` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -594,4 +601,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-13 18:07:12
+-- Dump completed on 2019-11-15 16:36:58

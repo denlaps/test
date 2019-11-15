@@ -60,7 +60,14 @@ include ('elements/header.php');
                         <section class="readyLooks__useful">
                             <h3>К этому образу<br>также подойдут:</h3>
                             <div class="goodsSlider">
-                                <button class="goodsSlider__prev"></button>
+                                    <?php 
+                                        $look_combined_count_res = mysqli_query($db, "SELECT COUNT(*) as count FROM look_combined WHERE look_id = $look_id");
+                                        $look_combined_count_row = mysqli_fetch_array($look_combined_count_res);
+
+                                        if($look_combined_count_row['count'] > 3) {
+                                    ?>
+                                        <button class="goodsSlider__prev"></button>
+                                    <?php } ?>
                                 <div class="goodsSlider__wrapper">
                                 <?php 
                                     $look_combined_res = mysqli_query($db, "SELECT * FROM look_combined WHERE look_id = $look_id");
@@ -68,19 +75,20 @@ include ('elements/header.php');
                                         $good_id = $look_combined_row['good_id'];
                                         $good_res = mysqli_query($db, "SELECT * FROM good LEFT JOIN good_photo ON good.id = good_photo.good_id AND good_photo.is_main = 1 WHERE good.id = $good_id LIMIT 1");
                                         $good_row = mysqli_fetch_assoc($good_res);
+                                        $good_json = json_encode($good_row);
                                 ?>
                                     <a href="good.php?id=<?= $good_id ?>">
                                             <img src="<?= $good_row['photo'] ?>" alt="">
                                             <div class="goodsSlider__addBtn">
-                                                <button><i class="far fa-heart"></i></button>
-                                                <button><i class="fas fa-shopping-basket"></i></button>
+                                                <button onclick="putToChoosen(`<?= $good_json ?>`)"><i class="far fa-heart"></i></button>
+                                                <button onclick="putToBasket(`<?= $good_json ?>`, ``, ``)"><i class="fas fa-shopping-basket"></i></button>
                                             </div>
                                     </a>
                                 <?php
                                     }
                                 ?>
                                 </div>
-                                <button class="goodsSlider__next"></button>
+                                <?php if($look_combined_count_row['count'] > 3) { ?><button class="goodsSlider__next"></button><?php } ?>
                             </div>
                         </section>
                         <?php 
@@ -113,6 +121,74 @@ include ('elements/header.php');
     <script src="libs/owlcarousel/owl.carousel.min.js"></script>
 
     <script>
+    function putToBasket(element, size, color) {
+        var element = JSON.parse(element);
+        element.quantity = 1;
+        element.color = color;
+        element.size = size;
+        console.log(element.size + ' ' + element.color);
+        var basket = localStorage.getItem("basket");
+        var basketArray = { basket: [] };
+        
+        if (basket !== null && basket !== '') {
+            var basketArray = JSON.parse(basket);
+            var index = basketArray.basket.findIndex(el => el.good_id === element.good_id);
+            var colorIndex = basketArray.basket.findIndex(el => el.color === color);
+            var sizeIndex = basketArray.basket.findIndex(el => el.size === size);
+            
+            if (index !== null && index !== -1 && colorIndex !== null && colorIndex !== -1 && sizeIndex !== null && sizeIndex !== -1) {
+                console.log('in:' + index);
+                basketArray.basket[index].quantity = +basketArray.basket[index].quantity + 1;
+                console.log(element.size);
+                new Toast({
+                    message: 'Товар успешно добавлен в корзину',
+                    type: 'danger'
+                });
+            } else {
+                console.log(element.size);
+                basketArray.basket.push(element);
+                new Toast({
+                    message: 'Товар успешно добавлен в корзину',
+                    type: 'danger'
+                });
+            }
+        } else {
+            console.log(element.size);
+            basketArray.basket.push(element);
+            new Toast({
+                message: 'Товар успешно добавлен в корзину',
+                type: 'danger'
+            });
+        }
+        
+        localStorage.setItem('basket', JSON.stringify(basketArray));
+    }
+    
+    function putToChoosen(element) {
+        var element = JSON.parse(element);
+        var choosen = localStorage.getItem("choosen");
+        var choosenArray = { choosen: [] };
+        
+        if (choosen !== null && choosen !== '') {
+            var choosenArray = JSON.parse(choosen);
+            var index = choosenArray.choosen.findIndex(el => el.good_id === element.good_id);
+            if (index === null || index === -1) {
+                choosenArray.choosen.push(element);
+                new Toast({
+                    message: 'Товар успешно добавлен в избранное',
+                    type: 'danger'
+                });
+            } 
+        } else {
+            choosenArray.choosen.push(element);
+            new Toast({
+                    message: 'Товар успешно добавлен в избранное',
+                    type: 'danger'
+            });
+        }
+        
+        localStorage.setItem('choosen', JSON.stringify(choosenArray));
+    }
     /* == [OWL SLIDER] == */
     $('.bottomSlider__wrapper').owlCarousel({
         margin: 14,

@@ -1,20 +1,20 @@
 <?php
     include ('../elements/db.php');
     //TODO: фильтр по цветам
-    $cf = " WHERE good.id > 0 ";
+    $cf = " WHERE g.id > 0 ";
     $search = "";
     $query = 0;
     if (isset($_GET["search"]) && $_GET["search"] != '0') {
         $query = $_GET["search"];
-        $search = " AND good.name LIKE '%$query%' ";
+        $search = " AND g.name LIKE '%$query%' ";
     }
     
     if (isset($_GET["id"])) {
         $category_id = $_GET["id"];
         if ($category_id == "all") {
-            $cf = " WHERE good.id > 0 ";
+            $cf = " WHERE g.id > 0 ";
         } else {
-            $cf = " WHERE good.category_id = $category_id ";
+            $cf = " WHERE g.category_id = $category_id ";
         }
 
         $limit = $_GET["limit"];
@@ -26,21 +26,21 @@
             $sale = 1;
             $new = 0;
             $best = 0;
-            $q =  "AND good.is_on_sale = $sale ";
+            $q =  "AND g.is_on_sale = $sale ";
         } 
 
         if (isset($_GET["new"]) && (int)$_GET["new"] != 0) {
             $sale = 0;
             $new = 1;
             $best = 0;
-            $q =  "AND good.new = $new ";
+            $q =  "AND g.new = $new ";
         }
 
         if (isset($_GET["best"]) && (int)$_GET["best"] != 0) {
             $sale = 0;
             $new = 0;
             $best = 1;
-            $q =  "AND good.best = $best ";
+            $q =  "AND g.best = $best ";
         }
 
         if (isset($_GET["page"])) {
@@ -52,7 +52,7 @@
         $category_id = "all";
     }
 
-    $good_res = mysqli_query($db, "SELECT * FROM good LEFT JOIN good_photo ON good.id = good_photo.good_id AND good_photo.is_main = 1 
+    $good_res = mysqli_query($db, "SELECT g.*, gp.photo FROM good as g LEFT JOIN good_photo as gp ON g.id = gp.good_id AND gp.is_main = 1  
         ".$cf.$q.$search." LIMIT $limit OFFSET $offset");
     $good_row = mysqli_fetch_all($good_res, MYSQLI_ASSOC);
     $next_offset = $offset + $limit;
