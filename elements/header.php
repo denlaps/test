@@ -51,7 +51,7 @@
 
             <!-- [Logo Panel] -->
             <section class="headBlock">
-                <img src="img/logo.jpg" alt="">
+                <a href="/"><img src="img/logo.jpg" alt=""></a>
                 <menu>
                     <li>
                         <form class="searchBox" action="">
@@ -94,7 +94,7 @@
                         <button><i class="far fa-heart"></i></button>
                     </li>
                     <li>
-                        <button><i class="fas fa-shopping-basket"></i></button>
+                        <button onclick="window.location.href = 'cart.php'"><i class="fas fa-shopping-basket"></i></button>
                     </li>
                 </menu>
             </section>

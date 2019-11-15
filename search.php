@@ -129,13 +129,12 @@ include ('elements/header.php');
                     <section class="bottomSlider">
                         <h2>Другие образы</h2>
                         <div class="bottomSlider__wrapper owl-carousel">
-                            <a href="#"><img src="uploads/sliderGirl1.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl3.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl1.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl3.jpg" alt=""></a>
-                            <a href="#"><img src="uploads/sliderGirl2.jpg" alt=""></a>
+                        <?php
+                                 $look_res = mysqli_query($db, "SELECT l.*, lp.photo FROM look as l LEFT JOIN look_photo as lp ON l.id = lp.look_id AND lp.is_main = 1");
+                                 while ($look_row = mysqli_fetch_array($look_res)) {
+                            ?>
+                                <a href="looks.php?id=<?= $look_row['id'] ?>"><img src="<?= $look_row['photo'] ?>" alt="" height="300px"></a>
+                            <?php } ?>
                         </div>
                     </section>
                 </main>

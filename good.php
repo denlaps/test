@@ -1,17 +1,17 @@
 <?php 
+if (isset($_GET["id"])) {
+    $good_id = $_GET["id"];
+} else {
+    header('Location: /404.php');
+}
 include ('./elements/header.php');
 ?>
-    
         <section class="contentWrapper">
         <?php 
             include ('./elements/sidebar.php');
         ?>
         <?php 
-            if (isset($_GET["id"])) {
-                $good_id = $_GET["id"];
-            } else {
-                header('Location: /404.php');
-            }
+            
             $good_res = mysqli_query($db, "SELECT * FROM good LEFT JOIN good_photo ON good.id = good_photo.good_id WHERE good.id = $good_id LIMIT 1");
             $good_row = mysqli_fetch_assoc($good_res);
             $good_json = json_encode($good_row, JSON_UNESCAPED_UNICODE);
@@ -24,6 +24,10 @@ include ('./elements/header.php');
             $good_sizes_res = mysqli_query($db, "SELECT * FROM good_size WHERE good_id = $good_id");
             $good_colors_res = mysqli_query($db, "SELECT * FROM good_color WHERE good_id = $good_id");
             $good_combined_res = mysqli_query($db, "SELECT * FROM good_combined WHERE good_id = $good_id");
+            
+            if(!$good_main_photo_row['photo']) {
+                $good_main_photo_row['photo'] = 'img/box.jpg';
+            }
         ?>
 
             <!-- [RIGHT SIDE] -->
