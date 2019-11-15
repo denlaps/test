@@ -104,57 +104,9 @@ include ('elements/header.php');
         </section>
     </div>
     
-    <!-- [FOOTER] -->
-    <footer>
-        <div class="footer__wrapper">
-            <section class="footer__top">
-                <nav>
-                    <li><a href="#">Как заказать</a></li>
-                    <li><a href="#">Бонусная программа</a></li>
-                    <li><a href="#">Оплата и доставка</a></li>
-                    <li><a href="#">Гарантии и возврат</a></li>
-                    <li><a href="#">Вопрос-ответ</a></li>
-                </nav>
-                <nav>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                    <li><a href="#">Франшиза</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </nav>
-                <section class="footer__contacts">
-                    <ul class="number">
-                        <li><i class="fas fa-phone-alt"></i>8-888-888-88-88</li>
-                        <li><i class="fas fa-envelope"></i>frimis@gmail.com</li>
-                    </ul>
-                    <ul class="social">
-                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-odnoklassniki"></i></a></li>
-                    </ul>
-                </section>
-                <form action="#">
-                    <h4>Оформите подписку</h4>
-                    <input type="text" placeholder="Укажите e-mail">
-                    <input type="submit" value="Подписаться">
-                    <label>
-                        Нажимая на кнопку «Подписаться», я
-                        соглашаюсь на обработку моих персональных
-                        данных и ознакомлен(а) с условиями
-                        конфиденциальности.
-                    </label>
-                </form>
-            </section>
-            <section class="footer__info">
-                <span>
-                    © «Frimis» — интернет-магазин украшений и аксессуаров.<br>
-                    <a href="#">Политика конфиденциальности.</a>
-                </span>
-                <a href="#" class="fiveLogo">Разработка<br>и дизайн сайта «FIVE»</a>
-            </section>
-        </input>
-    </footer>
-    <!-- [/END FOOTER] -->
+    <?php 
+        include ('./elements/footer.php');
+    ?>
 
     <!-- [SCRIPTS] -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

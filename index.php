@@ -21,7 +21,7 @@ include ('./elements/header.php');
                             <figcaption>
                                 <span class="mainSlider__caption"><?php echo $collection_row['season'] ?> <?php echo $collection_row['year'] ?></span>
                                 <h2><?php echo $collection_row['title'] ?></h2>
-                                <a href="/collection.php?id=<?php $collection_row['id'] ?>">Смотреть</a>
+                                <a href="/collection.php?id=<?= $collection_row['id'] ?>">Смотреть</a>
                             </figcaption>
                         </figure>
                         <figure class="autumnLook">
@@ -66,7 +66,7 @@ include ('./elements/header.php');
                             <div class="orangeBlock__wrapper">
                                 <figcaption>
                                     <h2>Готовые образы<br>от стилиста</h2>
-                                    <a href="#">Смотреть</a>
+                                    <a href="/looks.php">Смотреть</a>
                                 </figcaption>
                             </div>
                         </figure>

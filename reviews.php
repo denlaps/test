@@ -2,88 +2,14 @@
 include ('elements/header.php');
 ?>
         <section class="contentWrapper">
-            <!-- [LEFT SIDE MENU] -->
-            <aside>
-                <nav class="menuBar">
-                    <li><a href="#">НОВИНКИ</a></li>
-                    <li><a href="#">ЛУЧШИЕ ПРЕДЛОЖЕНИЯ</a></li>
-                    <li><a href="#">РАСПРОДАЖА</a></li>
-
-                    <li><a href="#">Шапки</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Шарфы и платки</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Солнцезащитные платки</a></li>
-                    <li><a href="#">Ремни</a></li>
-                    <li><a href="#">Часы</a></li>
-                    <li><a href="#">Кошельки</a></li>
-                    <li><a href="#">Перчатки</a></li>
-                    <li><a href="#">Зонты</a></li>
-                    <li>
-                        <a href="#" class="menuBar__more">Для волос</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Украшения</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">Пляжные аксессуары</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Носки</a></li>
-                    <li><a href="#">Домашняя обувь</a></li>
-                    <li><a href="#">Маски карнавальные</a></li>
-
-                    <li>
-                        <a href="#" class="menuBar__more">ДЕТЯМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="menuBar__more">МУЖЧИНАМ</a>
-                        <ul>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                            <li><a href="#">Подпункт меню</a></li>
-                        </ul>
-                    </li>
-                </nav>
-            </aside>
-            <!-- [/END MENU] -->
+        <?php include ('elements/sidebar.php'); ?>
 
             <!-- [RIGHT SIDE] -->
             <section class="mainContent">
                 <!-- [Head] -->
                 <nav class="minLinks">
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Отзывы</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/reviews.php">Отзывы</a></li>
                 </nav>
                 <h1>Отзывы</h1>
                 <!-- [/End Head] -->
@@ -106,45 +32,10 @@ include ('elements/header.php');
                     </figure>
 
                     <section class="reviewsPage__wrapper">
-                        <article>
-                            <img src="img/noPhoto.jpg" alt="">
-                            <section class="reviewContent">
-                                <h3>Анастасия Иванова</h3>
-                                <span class="reviewContent__uHead">10 сентября 2018  |  Киров</span>
-                                <span class="reviewContent__text">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat natus animi soluta in fugit iste laudantium suscipit reiciendis autem porro, qui quos repellendus esse voluptates quas rerum! Corrupti, quisquam omnis!
-                                </span>
-                                <a href="#">Читать дальше</a>
-                            </section>
-                        </article>
-                        <article>
-                            <img src="uploads/avaGirl.jpg" alt="">
-                            <section class="reviewContent">
-                                <h3>Анастасия Иванова</h3>
-                                <span class="reviewContent__uHead">10 сентября 2018  |  Киров</span>
-                                <span class="reviewContent__text">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat natus animi soluta in fugit iste laudantium suscipit reiciendis autem porro, qui quos repellendus esse voluptates quas rerum! Corrupti, quisquam omnis!
-                                    <div class="attachFiles">
-                                        <img src="uploads/attachPhotoReview.jpg" alt="">
-                                        <img src="uploads/attachPhotoReview.jpg" alt="">
-                                    </div>
-                                </span>
-                            </section>
-                        </article>
-                        <article>
-                            <img src="img/noPhoto.jpg" alt="">
-                            <section class="reviewContent">
-                                <h3>Анастасия Иванова</h3>
-                                <span class="reviewContent__uHead">10 сентября 2018  |  Киров</span>
-                                <span class="reviewContent__text">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat natus animi soluta in fugit iste laudantium suscipit reiciendis autem porro, qui quos repellendus esse voluptates quas rerum! Corrupti, quisquam omnis!
-                                </span>
-                                <a href="#">Читать дальше</a>
-                            </section>
-                        </article>
+                        
                     </section>
 
-                    <button class="showMore">Показать ещё</button>
+                    <button class="showMore" onclick="loadMoreReviews()">Показать ещё</button>
                 </main>
                 <!-- [/END CONTENT] -->
             </section>
@@ -152,74 +43,26 @@ include ('elements/header.php');
         </section>
     </div>
     
-    <!-- [FOOTER] -->
-    <footer>
-        <div class="footer__wrapper">
-            <section class="footer__top">
-                <nav>
-                    <li><a href="#">Как заказать</a></li>
-                    <li><a href="#">Бонусная программа</a></li>
-                    <li><a href="#">Оплата и доставка</a></li>
-                    <li><a href="#">Гарантии и возврат</a></li>
-                    <li><a href="#">Вопрос-ответ</a></li>
-                </nav>
-                <nav>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                    <li><a href="#">Франшиза</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </nav>
-                <section class="footer__contacts">
-                    <ul class="number">
-                        <li><i class="fas fa-phone-alt"></i>8-888-888-88-88</li>
-                        <li><i class="fas fa-envelope"></i>frimis@gmail.com</li>
-                    </ul>
-                    <ul class="social">
-                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-odnoklassniki"></i></a></li>
-                    </ul>
-                </section>
-                <form action="#">
-                    <h4>Оформите подписку</h4>
-                    <input type="text" placeholder="Укажите e-mail">
-                    <input type="submit" value="Подписаться">
-                    <label>
-                        Нажимая на кнопку «Подписаться», я
-                        соглашаюсь на обработку моих персональных
-                        данных и ознакомлен(а) с условиями
-                        конфиденциальности.
-                    </label>
-                </form>
-            </section>
-            <section class="footer__info">
-                <span>
-                    © «Frimis» — интернет-магазин украшений и аксессуаров.<br>
-                    <a href="#">Политика конфиденциальности.</a>
-                </span>
-                <a href="#" class="fiveLogo">Разработка<br>и дизайн сайта «FIVE»</a>
-            </section>
-        </input>
-    </footer>
-    <!-- [/END FOOTER] -->
+    <?php 
+        include ('./elements/footer.php');
+    ?>
     
 <!-- [MODALS] -->
-<div class="modalWrapper">
+<div id="modalReview" class="modalWrapper">
 
 <section class="modal modal_medium modal__sendReview">
     <h3>Оставить отзыв</h3>
     <form action="">
         <div class="form-box">
-            <input type="text" placeholder="Ваше имя">
-            <input type="text" placeholder="Ваш телефон | e-mail">
-            <input type="text" placeholder="Ваш город">
-            <input type="text" placeholder="Ваше сообщение">
+            <input id="user_name" type="text" placeholder="Ваше имя">
+            <input id="user_phone" type="text" placeholder="Ваш телефон | e-mail">
+            <input id="user_city" type="text" placeholder="Ваш город">
+            <input id="user_message" type="text" placeholder="Ваше сообщение">
         </div>
         <div class="form-box">
-            <button class="sendFile">Выбрать файл</button>
-            <input type="file">
-            <input type="submit" value="Отправить">
+            <!-- <button class="sendFile">Выбрать файл</button>
+            <input type="file"> -->
+            <button class="showMore" onclick="sendReview()">Отправить</button>
         </div>
         <span class="uText">Нажимая на кнопку «Отправить», я соглашаюсь на обработку персональных данных и ознакомлен(а) с условиями конфиденциальности.</span>
     </form>
@@ -233,8 +76,58 @@ include ('elements/header.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="libs/owlcarousel/owl.carousel.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <script src="/js/toast.js"></script>
     <script>
+    nextUrl = '/api/reviews.php?limit=3&offset=0';
+
+    loadMoreReviews();
+    function loadMoreReviews() {
+            $.get(nextUrl, (res) => {
+                if (res.data.length < 3) {
+                    $('.showMore').hide();
+                } else {
+                    $('.showMore').show();
+                }
+                console.log(res);
+                res.data.forEach((el) => {
+                    $('.reviewsPage__wrapper').append(`<article>
+                            <img src="img/noPhoto.jpg" alt="">
+                            <section class="reviewContent">
+                                <h3>` + el.name + `</h3>
+                                <span class="reviewContent__uHead">` + el.created_at + ` |  ` + el.city + `</span>
+                                <span class="reviewContent__text">
+                                ` + el.review + `
+                                </span>
+                            </section>
+                        </article>`);
+                });
+               
+                nextUrl = res.next_url;
+                console.log(nextUrl);
+            });
+    }
+        function sendReview() {
+            var orderData = {};
+            orderData.name = $('#user_name').val();
+            orderData.phone = $('#user_phone').val();
+            orderData.city = $('#user_city').val();
+            orderData.review = $('#user_message').val();
+
+                $.post("api/message.php", orderData).done(function(data) {
+                    if (data.status == 1) {
+                        new Toast({
+                            message: 'Сообщение добавлено!',
+                            type: 'danger'
+                        });
+                        closeModal(); 
+                    } else {
+                        new Toast({
+                            message: 'Не удалось отправить сообщение!',
+                            type: 'danger'
+                        });
+                    }
+                });
+        }
     /* == [SELECT UI] == */
     $('.chLook__list').selectmenu({
         classes: {

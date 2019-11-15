@@ -1,0 +1,15 @@
+.buttonSubscribe {
+    background-color: #363636;
+    width: 100%;
+    font-size: 18px;
+    color:#fff;
+    text-align: center;
+    font-family: GothamPro,Verdana;
+    font-weight: 400;
+    padding: 10px 0;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    transition: background-color .3s;
+    height: 45px;
+    margin: 15px 0;
+}

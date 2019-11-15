@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="libs/owlcarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/additional.css">
     <link rel="stylesheet" href="libs/owlcarousel/owl.theme.default.min.css">
     <script src="https://kit.fontawesome.com/c6f437d80c.js" crossorigin="anonymous"></script>
     <script>
@@ -32,15 +33,15 @@
                     <a href="#">Покупателям</a>
                     <ul>
                         <li><a href="stepsBuy.php">Как заказать</a></li>
-                        <li><a href="qa">Оплата</a></li>
-                        <li><a href="#">Бонусная программа</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Гарантии</a></li>
-                        <li><a href="#">Возврат</a></li>
+                        <li><a href="page.php?id=pay">Оплата</a></li>
+                        <li><a href="page.php?id=bonus">Бонусная программа</a></li>
+                        <li><a href="page.php?id=delievery">Доставка</a></li>
+                        <li><a href="page.php?id=guarantee">Гарантии</a></li>
+                        <li><a href="page.php?id=refund">Возврат</a></li>
                         <li><a href="qaPage.php">Вопрос-ответ</a></li>
                         <li><a href="reviews.php">Отзывы</a></li>
                         <li><a href="aboutUs.php">О компании</a></li>
-                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="page.php?id=privacy">Политика конфиденциальности</a></li>
                     </ul>
                 </li>
                 <li><a href="contacts.php">Контакты</a></li>
